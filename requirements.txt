@@ -1,0 +1,10 @@
+pandas
+numpy
+scikit-learn
+lightgbm
+optuna
+imbalanced-learn
+statsmodels
+joblib
+matplotlib
+seaborn
