@@ -1,0 +1,10 @@
+
+PART 1 – STRUCTURAL AUDIT REPORT
+
+Total Applications: 307511
+Total Features: 122
+Default Rate: 8.07%
+Missing Ratio: 24.40%
+
+Interpretation:
+Portfolio shows moderate imbalance and missing complexity.

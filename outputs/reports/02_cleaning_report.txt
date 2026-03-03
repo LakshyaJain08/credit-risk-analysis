@@ -1,0 +1,8 @@
+
+PART 2 – DATA CLEANING REPORT
+
+Missing Before: 9152465
+Missing After: 0
+Data Quality Score: 100.00%
+
+Dataset ready for EDA.

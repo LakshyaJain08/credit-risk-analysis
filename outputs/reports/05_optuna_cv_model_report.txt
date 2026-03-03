@@ -1,0 +1,27 @@
+
+LIGHTGBM + SMOTE + OPTUNA (5-FOLD CV) REPORT
+
+Best Cross-Validated AUC: 0.6797
+
+Best Hyperparameters:
+{'n_estimators': 794, 'learning_rate': 0.07124451195090019, 'num_leaves': 20, 'max_depth': 10, 'min_child_samples': 80, 'subsample': 0.6388242835039527, 'colsample_bytree': 0.87760653233204, 'reg_alpha': 2.9381347187880067, 'reg_lambda': 0.5445209120810941}
+
+Top 5 Important Features:
+                   Feature  Importance
+REGION_POPULATION_RELATIVE        1187
+       CREDIT_INCOME_RATIO        1072
+    DAYS_LAST_PHONE_CHANGE         955
+           DAYS_ID_PUBLISH         913
+         DAYS_REGISTRATION         908
+
+Pipeline Summary:
+- VIF-based feature cleaning
+- One-hot encoding with feature name sanitization
+- SMOTE balancing inside each CV fold
+- 5-Fold Stratified Cross Validation
+- Optuna hyperparameter optimization with pruning
+- Final model retrained on full balanced dataset
+- Model saved for deployment
+
+Saved Model:
+data/processed/credit_risk_model_optuna_cv.pkl

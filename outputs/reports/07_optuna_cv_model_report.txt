@@ -1,0 +1,95 @@
+
+LIGHTGBM + SMOTE + OPTUNA (5-FOLD CV) – FINAL MODEL REPORT
+
+MODEL OBJECTIVE
+
+Develop a robust credit risk classification model capable of 
+detecting high-risk (default) applicants using advanced 
+feature engineering, imbalance handling and hyperparameter tuning.
+
+
+
+MODEL PERFORMANCE SUMMARY
+
+
+Best Cross-Validated AUC (5-Fold): 0.6797
+KS Statistic: 0.3735
+Average Precision (PR AUC): 0.2353
+
+Optimal Threshold (Max F1): 0.1408
+Best F1 Score: 0.2978
+
+Classification Report (at optimal threshold):
+              precision    recall  f1-score   support
+
+           0       0.94      0.89      0.92    282686
+           1       0.24      0.40      0.30     24825
+
+    accuracy                           0.85    307511
+   macro avg       0.59      0.64      0.61    307511
+weighted avg       0.89      0.85      0.87    307511
+
+
+
+
+BEST HYPERPARAMETERS (Optuna)
+
+{'n_estimators': 794, 'learning_rate': 0.07124451195090019, 'num_leaves': 20, 'max_depth': 10, 'min_child_samples': 80, 'subsample': 0.6388242835039527, 'colsample_bytree': 0.87760653233204, 'reg_alpha': 2.9381347187880067, 'reg_lambda': 0.5445209120810941}
+
+
+
+TOP 5 IMPORTANT FEATURES
+
+                   Feature  Importance
+REGION_POPULATION_RELATIVE        1187
+       CREDIT_INCOME_RATIO        1072
+    DAYS_LAST_PHONE_CHANGE         955
+           DAYS_ID_PUBLISH         913
+         DAYS_REGISTRATION         908
+
+Interpretation:
+- Features with highest importance contribute most to 
+  distinguishing defaulters from non-defaulters.
+- Financial exposure and behavioral instability variables 
+  typically dominate importance ranking.
+
+
+IMBALANCE HANDLING
+
+- SMOTE applied inside each cross-validation fold
+- Prevented data leakage
+- Improved minority class recall
+
+
+
+PIPELINE STRUCTURE
+
+1. Data Cleaning & Missing Value Treatment
+2. Feature Engineering & Ratio Creation
+3. VIF-Based Multicollinearity Reduction
+4. One-Hot Encoding with Feature Name Sanitization
+5. SMOTE Balancing (Training Fold Only)
+6. Stratified 5-Fold Cross Validation
+7. Optuna Hyperparameter Optimization (with pruning)
+8. Final Model Training on Balanced Dataset
+9. Deployment Model Serialization
+
+
+
+BUSINESS INTERPRETATION
+
+- High Recall improves identification of risky borrowers.
+- Precision-Recall analysis helps define approval cutoff.
+- KS Statistic indicates separation power between risk groups.
+- Model suitable for risk scoring and decision support systems.
+
+
+
+DEPLOYMENT
+
+Saved Model Path:
+data/processed/credit_risk_model_optuna_cv.pkl
+
+Model is ready for inference on unseen application data.
+
+

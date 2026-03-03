@@ -1,0 +1,33 @@
+
+PREVIOUS APPLICATION ANALYSIS REPORT
+
+Total Previous Applications: 487388
+
+Contract Status:
+- Approval Rate: 62.29%
+- Refusal Rate: 17.36%
+
+Financial Metrics:
+- Avg Application Amount: 174,200.73
+- Avg Credit Amount: 194,731.69
+- Avg Credit Gap: 20,530.96
+- Avg Annuity: 15,872.85
+- Avg Payment Term: 15.98 months
+
+Insurance Behavior:
+- % Loans Insured: 33.19%
+
+Loan Type:
+- Most Common Loan Type: Cash loans
+
+Data Anomaly:
+- % Records with 365243 anomaly in DAYS_FIRST_DRAWING: 55.73%
+
+Behavioral Risk:
+- % Customers with >50% refusal rate: 8.30%
+
+Key Insights:
+- High refusal rate indicates behavioral instability.
+- Credit gap suggests approval adjustments by lender.
+- Long payment terms may correlate with higher exposure.
+- 365243 values indicate placeholder or missing date encoding.

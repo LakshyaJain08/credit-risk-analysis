@@ -1,0 +1,132 @@
+
+PART 3 – ADVANCED FULL EDA REPORT
+
+OBJECTIVE:
+To perform comprehensive univariate, bivariate and multivariate 
+analysis to identify financial, demographic and behavioral risk drivers.
+
+
+UNIVARIATE ANALYSIS
+
+Numerical Feature Distribution Statistics:
+AMT_INCOME_TOTAL → Skew: 391.56, Kurtosis: 191786.55
+AMT_CREDIT → Skew: 1.23, Kurtosis: 1.93
+AMT_ANNUITY → Skew: 1.58, Kurtosis: 7.71
+DAYS_BIRTH → Skew: -0.12, Kurtosis: -1.05
+
+Categorical Distribution Summary:
+
+NAME_INCOME_TYPE Distribution (%):
+NAME_INCOME_TYPE
+Working                 51.63
+Commercial associate    23.29
+Pensioner               18.00
+State servant            7.06
+Unemployed               0.01
+Student                  0.01
+Businessman              0.00
+Maternity leave          0.00
+
+NAME_EDUCATION_TYPE Distribution (%):
+NAME_EDUCATION_TYPE
+Secondary / secondary special    71.02
+Higher education                 24.34
+Incomplete higher                 3.34
+Lower secondary                   1.24
+Academic degree                   0.05
+
+CODE_GENDER Distribution (%):
+CODE_GENDER
+F      65.83
+M      34.16
+XNA     0.00
+
+Key Observations:
+- Financial variables show positive skewness (right-tailed distribution).
+- Credit and income exhibit heavy-tailed behavior.
+- Majority income type: Working.
+- Skewed distributions indicate potential outlier influence.
+
+
+BIVARIATE ANALYSIS (Feature vs TARGET)
+
+Mean Comparison (Default vs Non-Default):
+AMT_INCOME_TOTAL → Default Mean: 165611.76, Non-Default Mean: 169077.72
+AMT_CREDIT → Default Mean: 557778.53, Non-Default Mean: 602648.28
+AMT_ANNUITY → Default Mean: 26481.74, Non-Default Mean: 27163.53
+DAYS_BIRTH → Default Mean: -14884.83, Non-Default Mean: -16138.18
+
+Highest Risk Credit-Income Quartile:
+8.74%
+
+Highest Risk Age Group:
+(20, 30]  |  Default Rate: 11.46%
+
+Risk Insights:
+- Over-leveraged customers (high credit-to-income ratio) 
+  demonstrate significantly higher default probability.
+- Younger age segments show relatively higher instability.
+- Financial exposure strongly differentiates defaulters.
+
+
+MULTIVARIATE ANALYSIS
+
+Top 5 Positively Correlated with TARGET:
+TARGET                         1.000000
+DAYS_BIRTH                     0.078239
+REGION_RATING_CLIENT_W_CITY    0.060893
+REGION_RATING_CLIENT           0.058899
+DAYS_LAST_PHONE_CHANGE         0.055218
+
+Top 5 Negatively Correlated with TARGET:
+DAYS_EMPLOYED   -0.044932
+AGE             -0.078239
+EXT_SOURCE_1    -0.098887
+EXT_SOURCE_3    -0.155892
+EXT_SOURCE_2    -0.160295
+
+Interpretation:
+- Financial ratios and external risk sources (if available)
+  dominate predictive structure.
+- Limited extreme correlation observed among non-financial variables.
+
+
+MULTICOLLINEARITY ANALYSIS (VIF)
+
+Variance Inflation Factor (VIF) Table:
+         Feature       VIF  R2_Percentage
+AMT_INCOME_TOTAL  1.547667      35.386625
+      AMT_CREDIT  7.942439      87.409408
+     AMT_ANNUITY 10.109672      90.108482
+      DAYS_BIRTH  3.684692      72.860692
+
+R² Percentage (Variance Explained by Other Predictors):
+         Feature  R2_Percentage
+AMT_INCOME_TOTAL      35.386625
+      AMT_CREDIT      87.409408
+     AMT_ANNUITY      90.108482
+      DAYS_BIRTH      72.860692
+
+High VIF Features (VIF > 5):
+['AMT_CREDIT', 'AMT_ANNUITY']
+
+VIF Interpretation:
+- VIF between 1–5 indicates moderate correlation.
+- VIF above 5 indicates high multicollinearity.
+- High R² % suggests the variable is largely explained by others.
+- Financial features often show natural correlation (expected in credit datasets).
+
+Regulatory Insight:
+- For logistic regression or scorecard models, high VIF features 
+  may require removal.
+- For tree-based models (LightGBM), multicollinearity impact is minimal.
+
+
+OVERALL CONCLUSION
+
+
+- Credit-to-income ratio is a strong financial stress indicator.
+- Behavioral instability and financial leverage are key risk drivers.
+- Multicollinearity is manageable after VIF filtering.
+- Dataset is suitable for predictive modeling and risk scoring.
+
