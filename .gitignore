@@ -1,0 +1,22 @@
+# Ignore dataset
+data/raw/*
+*.csv
+
+# Ignore model files
+*.pkl
+
+# Ignore reports
+*.txt
+
+# Ignore outputs
+outputs/
+__pycache__/
+.ipynb_checkpoints/
+
+# Ignore virtual environments
+env/
+venv/
+
+# Ignore OS files
+.DS_Store
+Thumbs.db
